@@ -6,7 +6,7 @@ function FormFilter({ statusArray, onStatusChange, onAuthorChange, onTagsChange,
   return (
     <div className='form-filter'>
       <FormTokenField
-        value={filterStatus}
+        value={filterStatus || []}
         suggestions={statusArray}
         onChange={(status) => {
           onStatusChange(status)
@@ -15,14 +15,14 @@ function FormFilter({ statusArray, onStatusChange, onAuthorChange, onTagsChange,
       />
 
       <FormTokenField
-        value={filterAuthor}
+        value={filterAuthor || []}
         onChange={(author) => {
           onAuthorChange(author)
         }}
         label="Author"
       />
       <FormTokenField
-        value={filterTags}
+        value={filterTags || []}
         onChange={(tags) => {
           onTagsChange(tags)
         }}
@@ -30,7 +30,7 @@ function FormFilter({ statusArray, onStatusChange, onAuthorChange, onTagsChange,
       />
 
       <FormTokenField
-        value={filterCategories}
+        value={filterCategories || []}
         onChange={(categories) => {
           onCategoriesChange(categories)
         }}

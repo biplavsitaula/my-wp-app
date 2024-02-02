@@ -4,13 +4,13 @@
 }
 
 body {
-	background-color: rgb(231, 231, 231);
+	background-color: rgb(204, 224, 218);
 	width: 90%;
 }
 
 .form-filter {
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	gap: 2em;
 	width: inherit;
 }

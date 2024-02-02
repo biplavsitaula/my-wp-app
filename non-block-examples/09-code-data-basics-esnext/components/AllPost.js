@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import Loader from './Loader';
 
 
-function AllPost({ postList, postLength, currentPage, totalPages, handleNext, handlePrev, handlePage, page, author, categories, tags, handleSortTitle, handleSortDate, statusArray, handleAuthor, handleTags, handleCategories }) {
+function AllPost({ postList, postLength, currPage, totalPages, handleNext, handlePrev, handlePage, page, author, categories, tags, handleSortTitle, handleSortDate, statusArray, handleAuthor, handleTags, handleCategories }) {
 
   const getAuthorName = (authorId) => {
     const authorName = author?.find(element => element.id == authorId);
@@ -13,7 +13,7 @@ function AllPost({ postList, postLength, currentPage, totalPages, handleNext, ha
   }
   const getCategoriesName = (categoriesId) => {
     const categoriesName = categories?.find(element => element.id == categoriesId)
-    return categoriesName?.name
+    return categoriesName ? categoriesName?.name : "-"
   }
 
   const getTagName = (tagId) => {
@@ -34,11 +34,12 @@ function AllPost({ postList, postLength, currentPage, totalPages, handleNext, ha
     <div>
       <Button href="http://localhost/testbiplav/wp-admin/post-new.php" class="page-title-action">Add New Post</Button>
       <div className='pagination-control'>
+
         <RichText.Content tagName='p' value={`${postList?.length} of ${postLength}`} />
         --{page.map((p) => <Button style={{ padding: '0px 10px' }} onClick={handlePage}>{p}</Button>)
         }--
         <Button onClick={handlePrev} className='prev-page button'>Previous</Button>
-        {currentPage} of {totalPages}
+        {currPage} of {totalPages}
         <Button onClick={handleNext} className='next-page button'>Next</Button>
       </div>
       {
@@ -81,9 +82,9 @@ function AllPost({ postList, postLength, currentPage, totalPages, handleNext, ha
                 ))
                 }
                 </td>
-                <td className='tags columen-tags'>{data?.tags.map((tag, index) => (
-                  <span onClick={() => handleTags([tag])} style={{ cursor: 'pointer' }}>
-                    {getTagName(tag)}
+                <td className='tags columen-tags'>{data?.tags.map((tags, index) => (
+                  <span onClick={() => handleTags([tags])} style={{ cursor: 'pointer' }}>
+                    {getTagName(tags)}
                     {index < data.tags.length - 1 && ', '}
                   </span>
                 )

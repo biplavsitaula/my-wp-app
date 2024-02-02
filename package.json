@@ -42,6 +42,7 @@
 		"packages-update": "wp-scripts packages-update"
 	},
 	"dependencies": {
+		"@wordpress/core-data": "^6.27.2",
 		"@wordpress/i18n": "^4.49.0",
 		"@wordpress/icons": "^9.40.0",
 		"react-dom": "^18.2.0",
